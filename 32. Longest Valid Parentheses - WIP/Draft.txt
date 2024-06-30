@@ -1,0 +1,25 @@
+int longestValidParentheses(char* s) {
+  int len = 0, total_len = 0, max_len = 0, n = strlen (s);
+  char p[n + 1];
+
+  for (int i = 0, j = -1; i < n; i++) {
+    if ((s[i] == '(') || (s[i] == '[') || (s[i] == '{')) {
+      p[++j] = s[i];
+    } else if ((j < 0) || (s[i] == ')' && p[j] != '(') || (s[i] == ']' && p[j] != '[') || (s[i] == '}' && p[j] != '{')) {
+      max_len = fmax(max_len, fmax(len, total_len));
+      total_len = 0;
+      len = 0;
+      j = -1;
+    } else {
+      len +=2;
+      j--;
+      printf (" len=%d,j=%d ", len, j);
+      if (j == -1) {
+        total_len += len;
+        len = 0;
+      }
+    }
+  }
+
+  return fmax (max_len, fmax(len, total_len));
+}

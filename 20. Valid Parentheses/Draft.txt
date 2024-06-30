@@ -1,0 +1,33 @@
+bool isValid(char* s) {
+    char p;
+    int i, j;
+    printf (" %d %d %d %d %d %d ", '(', ')', '{', '}', '[', ']');
+    printf (" strlen(s)=%d ", strlen (s));
+    for (i = 0, j = strlen (s) - 1, p = '\0'; i <= j;) {
+        if (p == '\0') {
+            printf (" left:%c ", s[i]);
+            switch (s[i++]) {
+                case '(': p = ')'; break;
+                case '[': p = ']'; break;
+                case '{': p = '}'; break;
+                default : return false;
+            }
+            // if ((s[i] == '(') || (s[i] == '[') || (s[i] == '{')) {
+            //     p = s[i];
+            //     i++;
+            // } else {
+            //     return false;
+            // }
+        } else {
+            printf (" right:%c ", s[j]);
+            if (s[j] == p) {
+                p = '\0';
+                j--;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
