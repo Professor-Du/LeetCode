@@ -1,0 +1,29 @@
+char* reverseStr(char* s, int k) {
+    char temp;
+    int low = 0, high, i, j, n = strlen(s);
+
+    low = 0;
+    high = fmin (low + k, n);
+
+    while (low <= n) {
+        for (i = low, j = high - 1; i < j; i++, j--) {
+            temp = s[i];
+            s[i] = s[j];
+            s[j] = temp;
+        }
+        low = low + 2 * k;
+        high = fmin (low + k, n);
+    }
+
+    return s;
+}
+
+
+
+s =
+"hyzqyljrnigxvdtneasepfahmtyhlohwxmkqcdfehybknvdmfrfvtbsovjbdhevlfxpdaovjgunjqlimjkfnqcqnajmebeddqsgl"
+
+k =
+39
+
+"fdcqkmxwholhytmhafpesaentdvxginrjlyqzyhehybknvdmfrfvtbsovjbdhevlfxpdaovjgunjqllgsqddebemjanqcqnfkjmi"
