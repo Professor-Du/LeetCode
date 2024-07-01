@@ -14,7 +14,7 @@ int happySum(int n) {
   return sum;
 }
 
-bool isHappy(int n) {
+bool isHappy(int n) {  // Faster than 100% solutions!!!
   int slow = n, fast = happySum(n);
 
   while ((fast != 1) && (fast != slow)) {

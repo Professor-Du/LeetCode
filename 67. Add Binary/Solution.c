@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-char* addBinary(char* a, char* b) {
+char* addBinary(char* a, char* b) {  // Faster than 100% solutions!!!
     int  len_a, len_b, len_s, index, carry;
     char *s    = NULL;
 

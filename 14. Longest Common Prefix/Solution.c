@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 
-char* longestCommonPrefix(char** strs, int strsSize) {
+char* longestCommonPrefix(char** strs, int strsSize) {  // Faster than 100% solutions!!!
   int i, j, max_len = 201;
   char *result = malloc (max_len * sizeof (char));
 

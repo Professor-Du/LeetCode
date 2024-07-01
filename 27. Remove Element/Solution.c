@@ -3,7 +3,7 @@
 
 #define ARRAY_SIZE(array) (sizeof (array) / sizeof (array[0]))
 
-int removeElement(int* nums, int numsSize, int val) {
+int removeElement(int* nums, int numsSize, int val) {  // Faster than 100% solutions!!!
     int n = 0;
     for (int i = 0; i < numsSize; i++) {
         if (nums[i] != val) {

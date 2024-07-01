@@ -12,7 +12,7 @@ int isBadVersion (int n) {
   return n >= mBadVersion;
 }
 
-int firstBadVersion(int n) {
+int firstBadVersion(int n) {  // Faster than 100% solutions!!!
   long long left = 1, right = n, middle = (left + right) / 2;  // sizeof (long) equals to 8 in leetcode but 4 here.
 
   if (isBadVersion (1)) {

@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <string.h>
 
-bool isValid(char* s) {
+bool isValid(char* s) {  // Faster than 100% solutions!!!
   int i, j, n = strlen (s);
   char p[n];
 

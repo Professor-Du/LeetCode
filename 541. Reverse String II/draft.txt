@@ -1,4 +1,4 @@
-char* reverseStr(char* s, int k) {
+char* reverseStr(char* s, int k) {  // Faster than 100% solutions!!!
     char temp;
     int low = 0, high, i, j, n = strlen(s);
 

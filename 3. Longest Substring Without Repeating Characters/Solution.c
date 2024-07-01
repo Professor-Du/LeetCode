@@ -30,7 +30,7 @@ int lengthOfLongestSubstring2(char* s) {
     return result;
 }
 
-int lengthOfLongestSubstring_hash(char* s) {
+int lengthOfLongestSubstring_hash(char* s) {  // Faster than 100% solutions!!!
     int result = 0, len = 0;
     int hash[128] = {0};
 

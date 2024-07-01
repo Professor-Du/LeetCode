@@ -32,7 +32,7 @@ struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2) {
 }
 
 
-struct ListNode* mergeTwoLists2(struct ListNode* list1, struct ListNode* list2) {
+struct ListNode* mergeTwoLists2(struct ListNode* list1, struct ListNode* list2) {  // Faster than 100% solutions!!!
     struct ListNode *head = NULL, **temp = &head;
 
     // if (list1 == NULL) {
