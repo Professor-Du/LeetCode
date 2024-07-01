@@ -1,0 +1,22 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* countBits(int n, int* returnSize) {  // doesn't work when n = 36: Expectation: [0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,1,2,2,3,2]
+    *returnSize = n + 1;
+    int base = 0, offset[] = {0,1,1,2}, *a = malloc(sizeof (int) * (*returnSize));
+
+    a[0] = 0;
+
+    for (int i = 1, j = 0; i < (*returnSize); i++, j++) {
+        if ((i & (i - 1)) == 0) {
+            base = 1;
+            j = 0;
+        } else if ((i % 4) == 0) {
+            base++;
+            j = 0;
+        }
+        a[i] = base + offset[j];
+    }
+
+    return a;
+}
