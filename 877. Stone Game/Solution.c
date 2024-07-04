@@ -32,7 +32,7 @@ bool stoneGame_dp1(int* piles, int pilesSize) {
         dp[i] = piles[i];
     }
 
-    for (int i = pilesSize - 2; i >= 0; i--) {
+    for (int i = pilesSize - 2; i >= 0; i--) {  // dp[i][j] = dp[i+1][j] + dp[i][j-1]; check 119. Pascal's Triangle II
         for (int j = i + 1; j < pilesSize; j++) {
             dp[j] = fmax (piles[i] - dp[j], piles[j] - dp[j-1]);
         }

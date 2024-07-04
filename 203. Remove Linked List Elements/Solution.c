@@ -42,8 +42,8 @@ void freeList (struct ListNode *head) {
     struct ListNode *temp = head;
     while (head != NULL) {
         temp = head;
-        free (temp);
         head = head->next;
+        free (temp);
     }
 }
 
@@ -65,6 +65,7 @@ int main () {
         printf ("%d ", temp->val);
     }
 
+    freeList (head);
     getchar ();
     return 0;
 }
