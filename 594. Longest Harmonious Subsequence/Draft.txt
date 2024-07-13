@@ -1,0 +1,27 @@
+static int cmp (const void *a, const void *b) {
+    return *((int *) a) - *((int *) b);
+}
+
+int findLHS(int* nums, int numsSize){  // slightly better :(
+    int i, j, k, maxLen = 0;
+
+    qsort (nums, numsSize, sizeof (int), cmp);
+
+    for (i = 0, j = 1, k = 0; j < numsSize; j++) {
+        if (nums[j] != nums[j - 1]) {  // val is changed
+            if (nums[j] > nums[i] + 1) {
+                if (nums[j - 1] == nums[i] + 1) {
+                    maxLen = fmax (maxLen, j - i);
+                }
+                i = (i == k) ? j : k;  // move to j if there is no next checkpoint (i.e., i equals to k).
+            }
+            k = j;  // next checkpoint
+        }
+    }
+
+    if (nums[j - 1] == nums[i] + 1) {
+        maxLen = fmax (maxLen, j - i);
+    }
+
+    return maxLen;
+}
