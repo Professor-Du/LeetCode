@@ -1,0 +1,1 @@
+the values of left children are all less than the values of right children for BST.
