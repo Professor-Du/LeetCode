@@ -1,0 +1,20 @@
+char * mergeAlternately(char * word1, char * word2){   // Faster than 100% solutions!!!
+    int i, j, len1 = strlen (word1), len2 = strlen (word2);
+    int minLen = fmin (len1, len2), totLen = len1 + len2;
+    char *w = malloc (sizeof (char) * (totLen + 1));
+
+    w[totLen] = '\0';
+    for (i = 0; i < minLen; i++) {
+        j = 2 * i;
+        w[j] = word1[i];
+        w[j+1] = word2[i];
+    }
+
+    if (i < len1) {
+        memcpy (w + 2 * i, word1 + i, len1 - i);
+    } else {
+        memcpy (w + 2 * i, word2 + i, len2 - i);
+    }
+    
+    return w;
+}
