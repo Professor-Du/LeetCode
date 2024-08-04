@@ -1,0 +1,101 @@
+typedef struct {
+  char  character;
+  int   count;
+} HASH_TABLE;
+
+static int cmp (const void *a, const void *b) {
+  return ((HASH_TABLE *)b)->count - ((HASH_TABLE *)a)->count;
+}
+
+char* reorganizeString(char* s) {
+  char c;
+  int i, idx, maxIdx = 0, len = strlen (s);
+  HASH_TABLE *h1, *h2, temp, *hash = calloc (26, sizeof (HASH_TABLE));
+
+  for (i = 0; i < len; i++) {
+    c = s[i]; idx = c - 'a';
+    hash[idx].character = c;
+    hash[idx].count++;
+    if ((idx != maxIdx) && (hash[idx].count > hash[maxIdx].count)) {
+      maxIdx = idx;
+    }
+  }
+
+  if (hash[maxIdx].count > (len + 1) / 2) {
+    return "";
+  }
+
+  if (maxIdx != 0) {
+    memcpy (&temp, hash, sizeof (HASH_TABLE));
+    memcpy (hash, hash  + maxIdx, sizeof (HASH_TABLE));
+    memcpy (hash + maxIdx, &temp, sizeof (HASH_TABLE));
+  }
+
+  for (idx = 0, i = 0; idx < 26; idx++) {
+    if (hash[idx].count == 0) {
+      continue;
+    }
+
+    while (hash[idx].count > 0) {
+      s[i] = hash[idx].character;
+      hash[idx].count--;
+
+      i += 2;
+      if (i >= len) {
+        i = 1;
+      }
+    }
+  }
+
+  return s;
+}
+
+
+
+typedef struct {
+  char  character;
+  int   count;
+} HASH_TABLE;
+
+char* reorganizeString(char* s) {  // Faster than 100% solutions!!!
+  char c;
+  int i, idx, maxIdx = 0, len = strlen (s);
+  HASH_TABLE *temp = malloc (sizeof (HASH_TABLE)), *hash = calloc (26, sizeof (HASH_TABLE));
+
+  for (i = 0; i < len; i++) {
+    c = s[i]; idx = c - 'a';
+    hash[idx].character = c;
+    hash[idx].count++;
+    if ((idx != maxIdx) && (hash[idx].count > hash[maxIdx].count)) {
+      maxIdx = idx;
+    }
+  }
+
+  if (hash[maxIdx].count > (len + 1) / 2) {
+    return "";
+  }
+
+  if (maxIdx != 0) {
+    memcpy (temp, hash, sizeof (HASH_TABLE));
+    memcpy (hash, hash  + maxIdx, sizeof (HASH_TABLE));
+    memcpy (hash + maxIdx, temp, sizeof (HASH_TABLE));
+  }
+
+  for (idx = 0, i = 0; idx < 26; idx++) {
+    if (hash[idx].count == 0) {
+      continue;
+    }
+
+    while (hash[idx].count > 0) {
+      s[i] = hash[idx].character;
+      hash[idx].count--;
+
+      i += 2;
+      if (i >= len) {
+        i = 1;
+      }
+    }
+  }
+
+  return s;
+}
